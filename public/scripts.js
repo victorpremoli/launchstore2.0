@@ -11,6 +11,45 @@ const Mask = {
             style: 'currency',
             currency:'BRL'
         }).format(value/100)
+    },
+    cpfCnpj(value) {
+        value = value.replace(/\D/g,"")
+
+        if(value.length > 14) {
+            value = value.slice(0, -1)
+        }
+
+        //check if is cpf or cnpj
+        if(value.length > 11) {
+            //CNPJ - 11.222.333/0001-11
+            value = value.replace(/(\d{2})(\d)/, "$1.$2")
+            value = value.replace(/(\d{3})(\d)/, "$1.$2")
+            value = value.replace(/(\d{3})(\d)/, "$1/$2")
+            value = value.replace(/(\d{4})(\d)/, "$1-$2")
+
+        } else {
+            //CPF 111.222.333-44
+            value = value.replace(/(\d{3})(\d)/, "$1.$2")
+            value = value.replace(/(\d{3})(\d)/, "$1.$2")
+            value = value.replace(/(\d{3})(\d)/, "$1-$2")
+
+        }
+        return value
+
+
+    },
+    cep(value) {
+
+        value = value.replace(/\D/g,"")
+
+        if(value.length > 8) {
+            value = value.slice(0, -1)
+        }
+
+        value = value.replace(/(\d{5})(\d)/, "$1-$2")
+
+        return value
+
     }
 }
 

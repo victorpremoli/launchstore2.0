@@ -1,7 +1,5 @@
-class UserController {
+module.exports = {
     registerForm(req,res) {
-        return res.redirect('/produtos')
+        return res.render("user/register")
     }
 }
-
-module.exports = new UserController()

@@ -28,11 +28,30 @@
                     Novo anúncio
                 </a>
             </li>
-            <li>
+            <li class='accounts' >
                 <a href="/accounts">
                     <i class="material-icons">account_circle</i>
                     Minha conta
                 </a>
+
+                {% if user %}
+                    <ul class="submenu">
+                        <li>
+                            <a href="/users">Configurações</a>
+                        </li>
+                        <li>
+                            <a href="/buying">Meus pedidos</a>
+                        </li>
+                        <li>
+                            <a href="/selling">Meus anúncios</a>
+                        </li>
+                        <li>
+                            <form action="/users/logout" method="POST">
+                                <button>Sair</button>
+                            </form>
+                        </li>
+                    </ul>
+                {% endif %}
             </li>
         </ul>
     </nav>
